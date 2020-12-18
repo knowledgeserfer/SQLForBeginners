@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>T-SQL data types</title>
+	<style type="text/css">
+		body{
+			font-size: 26px;
+			background-color: black;
+			color: white;
+			text-align: justify;
+		}
+		h2, span{
+			color: violet;
+		}
+		h2{
+			text-align: center;
+		}
+
+	</style>
+</head>
+<body>
+	<h2>Numeric data types</h2>
+	<p><span>BIT :</span> stores the value 0 or 1. In fact, it is analogous to the boolean type in programming languages. It takes 1 byte.</p>
+
+	<p><span>TINYINT :</span> Stores numbers from 0 to 255. Takes 1 byte. Good for storing small numbers.</p>
+
+	<p><span>SMALLINT :</span> stores numbers from –32 768 to 32 767. Takes 2 bytes</p>
+
+	<p><span>INT :</span> stores numbers from –2 147 483 648 to 2 147 483 647. It takes 4 bytes. Most used type for storing numbers.</p>
+
+	<p><span>BIGINT :</span> stores very large numbers from -9 223 372 036 854 775 808 to 9 223 372 036 854 775 807, which occupy 8 bytes in memory.</p>
+
+	<p><span>DECIMAL :</span> Stores numbers with fixed precision. It takes from 5 to 17 bytes depending on the number of numbers after the decimal point. This type can take two parameters precision and scale: DECIMAL(precision, scale). The precision parameter represents the maximum number of digits that the number can store. This value must be in the range 1 to 38. By default, it is 18. The scale parameter represents the maximum number of digits that a decimal point can contain. This value must be in the range 0 to precision. By default, it is 0.</p>
+
+	<p><span>NUMERIC :</span> This type is the same as the DECIMAL type.</p>
+
+	<p><span>SMALLMONEY :</span> Stores fractional values ​​from -214 748.3648 to 214 748.3647. Designed for storing monetary values. It takes 4 bytes. Equivalent to type DECIMAL(10,4).</p>
+
+	<p><span>MONEY :</span> Stores fractional values ​​from -922 337 203 685 477.5808 to 922 337 203 685 477.5807. Represents monetary values ​​and is 8 bytes. Equivalent to type DECIMAL(19,4).</p>
+
+	<p><span>FLOAT :</span> Stores numbers from –1.79E + 308 to 1.79E + 308. It takes from 4 to 8 bytes depending on the fractional part. May take the form of a definition FLOAT(n), where n represents the number of bits used to store the decimal part of a number (mantissa). By default n = 53.</p>
+
+	<p><span>REAL :</span> Stores numbers from –340E + 38 to 3.40E + 38. It takes 4 bytes. Equivalent to type FLOAT(24).</p>
+
+	<h2>Data types representing date and time</h2>
+	<p><span>DATE :</span> Stores dates from 0001-01-01 (January 1, 0001) to 9999-12-31 (December 31, 9999). It takes 3 bytes.</p>
+
+	<p><span>TIME :</span> stores time in the range 00: 00: 00.0000000 to 23: 59: 59.9999999. It occupies from 3 to 5 bytes.
+	May take the form TIME(n)where n represents the number of digits from 0 to 7 in the fractional part of seconds.</p>
+
+	<p><span>DATETIME :</span> Stores dates and times from 01/01/1753 to 31/12/9999. It takes 8 bytes.</p>
+
+	<p><span>DATETIME2 :</span> Stores dates and times in the range 01/01/0001 00: 00: 00.0000000 to 31/12/9999 23: 59: 59.9999999. It takes 6 to 8 bytes depending on the time precision.May take the form DATETIME2(n)where n represents the number of digits from 0 to 7 in the fractional part of seconds.</p>
+
+	<p><span>SMALLDATETIME :</span> Stores dates and times in the range 01/01/1900 to 06/06/2079, that is, the nearest dates. It takes at least 4 bytes.</p>
+
+	<p><span>DATETIMEOFFSET :</span> Stores dates and times in the range 0001-01-01 to 9999-12-31. Stores detailed time information with an accuracy of 100 nanoseconds. It takes 10 bytes.</p>
+	
+	<h2>String data types</h2>
+	<p><span>CHAR :</span> Stores a string from 1 to 8,000 characters long. Allocates 1 byte for each character. Not suitable for many languages ​​because it stores non-Unicode characters. The number of characters that a column can store is passed in parentheses. For example, for a column of type CHAR(10), 10 bytes will be allocated. And if we save a string less than 10 characters in the column, then it will be padded with spaces.</p>
+
+	<p><span>VARCHAR :</span> stores a string. 1 byte is allocated for each character. You can specify a specific length for the column - from 1 to 8,000 characters, for example VARCHAR(10). If the line should have more 8000 characters, the size is given by MAX, and on-line storage can be allocated up to 2 GB: VARCHAR(MAX).
+	Not suitable for many languages ​​because it stores non-Unicode characters.
+	Unlike the CHAR type, if a VARCHAR(10)string of 5 characters is saved in a column with the type , then exactly five characters will be saved in the column.</p>
+
+	<p><span>NCHAR :</span> Stores a Unicode string from 1 to 4,000 characters. 2 bytes are allocated for each character. For example, NCHAR(15)</p>
+
+	<p><span>NVARCHAR :</span> Stores a Unicode string. Each character is allocated 2 bytes. You can specify a specific size of 1 to 4000 characters . If the string must have more than 4000 characters, then the size is set to MAX, and up to 2 GB can be allocated for storing the string.</p>
+	
+	<h2>Binary data types</h2>
+	<p><span>BINARY :</span> Stores binary data as a sequence of 1 to 8,000 bytes.</p>
+
+	<p><span>VARBINARY :</span> Stores binary data as a sequence from 1 to 8,000 bytes, or up to 2 ^ 31-1 bytes when using the MAX value (VARBINARY (MAX)).</p>
+	
+	<h2>Other data types</h2>
+	<p><span>UNIQUEIDENTIFIER :</span> A unique GUID (essentially a string with a unique value) that is 16 bytes long.</p>
+
+	<p><span>TIMESTAMP :</span> some number that stores the version number of a row in a table. It takes 8 bytes.</p>
+
+	<p><span>CURSOR :</span> represents a set of strings.</p>
+
+	<p><span>HIERARCHYID :</span> represents a position in the hierarchy.</p>
+
+	<p><span>SQL_VARIANT :</span> Can store data of any other T-SQL data type.</p>
+
+	<p><span>XML :</span> Stores XML documents or fragments of XML documents. Takes up to 2 GB in memory.</p>
+
+	<p><span>TABLE :</span> represents the definition of a table.</p>
+
+	<p><span>GEOGRAPHY :</span> Stores geographic data such as latitude and longitude.</p>
+
+	<p><span>GEOMETRY :</span> Stores coordinates of a location on a plane.</p>
+</body>
+</html>
